@@ -11,10 +11,12 @@ with open(CONFIG_FILE) as f:
 
 automat = Automat(config=config)
 screen = pygame.display.set_mode((config.get("window_size"), config.get("window_size")))
-pygame.display.set_caption(config.get("title"))
+clock = pygame.time.Clock()
+fps = config.get("FPS")
 
 running = True
 while running:
+    pygame.display.set_caption(config.get("title") + "- Rule: " + str(automat.rule))
     screen.fill(tuple(config.get("background_color")))
     automat.draw(surface=screen)
     for event in pygame.event.get():
@@ -22,6 +24,6 @@ while running:
             running = False
     pygame.display.flip()
     automat.apply_rule_row()
-
+    clock.tick(fps)
 pygame.quit()
 sys.exit()

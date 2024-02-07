@@ -2,4 +2,5 @@ title: Elementary Cellular Automaton
 background_color: !!python/tuple [ 255, 255, 255 ]
 cell_color: !!python/tuple  [ 0, 0, 0 ]
 window_size: 1000
-tile_size: 5
+tile_size: 10
+FPS: 60

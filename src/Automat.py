@@ -18,7 +18,7 @@ class Automat:
         self.cell_color = config.get("cell_color")
         self.data = np.zeros(shape=(self.n, self.n))
         self.data[0, self.n // 2] = 1
-        self.rule = 30
+        self.rule = 57
         self.bin_rule = rule_to_bin_array(self.rule)
         self.current_row = 1
 
@@ -68,3 +68,15 @@ class Automat:
         for j in range(self.n):
             self.apply_rule_single_cell(i=self.current_row, j=j)
         self.current_row += 1
+
+        if self.current_row > self.n:
+            self.new_rule()
+
+    def new_rule(self):
+        self.data = np.zeros(shape=(self.n, self.n))
+        self.data[0, self.n // 2] = 1
+        self.rule += 1
+        if self.rule > 255:
+            self.rule = 0
+        self.bin_rule = rule_to_bin_array(self.rule)
+        self.current_row = 1
