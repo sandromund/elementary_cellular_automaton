@@ -21,6 +21,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     pygame.display.flip()
+    automat.apply_rule_row()
 
 pygame.quit()
 sys.exit()
